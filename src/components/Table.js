@@ -6,7 +6,7 @@ function NBATable({ teams, text }) {
   const [bgColor, setBgColor] = useState(null);
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState(null);
-  // const [sorted,setSorted] = useState(false);
+  const [sorted, setSorted] = useState(false);
 
   const openModal = (e) => {
     setBgColor(e);
@@ -30,13 +30,21 @@ function NBATable({ teams, text }) {
       }).length / 7
     );
     setTotalPage(p);
-    setPage(0)
+    setPage(0);
   }, [text]);
 
   if (teams === null) return <h1>loading...</h1>;
   return (
     <>
-      {/* <button  onClick={()=>setSorted((prev)=>!prev)}></button> */}
+      <br />
+      <button
+        className="btn btn-primary my-2 p-2 text-white sort"
+        style={{ width: "200px" }}
+        onClick={() => setSorted((prev) => !prev)}
+      >
+        {" "}
+        {sorted ? "Unsort" : "Sort By Team Name"}
+      </button>
       <table className="table mt-2">
         <thead className="text-white" style={{ backgroundColor: "#074684" }}>
           <tr>
@@ -51,17 +59,25 @@ function NBATable({ teams, text }) {
           {teams === null ? (
             <h1>loading...</h1>
           ) : (
-            [].concat(teams.filter((val) => {
-                if (text === "") {
-                  return val;
-                } else if (
-                  val.name.toLowerCase().includes(text.toLowerCase())
-                ) {
-                  return val;
+            []
+              .concat(
+                teams.filter((val) => {
+                  if (text === "") {
+                    return val;
+                  } else if (
+                    val.name.toLowerCase().includes(text.toLowerCase())
+                  ) {
+                    return val;
+                  }
+                  return null;
+                })
+              )
+              .sort((a, b) => {
+                if (!sorted) {
+                  return 0;
                 }
-                return null;
-              }))
-              .sort((a, b) => a.name > b.name ? 1 : -1)
+                return a.name > b.name ? 1 : -1;
+              })
               .slice(page, page + 7)
               .map((team) => {
                 return (
@@ -86,17 +102,21 @@ function NBATable({ teams, text }) {
 
       {/* pagination */}
       <div className="d-flex justify-content-end pagination m-2">
-        <button className="btn-1"
+        <button
+          className="btn-1"
           onClick={() => setPage((prev) => prev - 7)}
-          disabled={page<7}
+          disabled={page < 7}
         >
           {"<"}
         </button>
-        <button className="btn-2"  onClick={() => setPage(0)}>1</button>
+        <button className="btn-2" onClick={() => setPage(0)}>
+          1
+        </button>
         <button className="btn-3" onClick={() => setPage((totalPage - 1) * 7)}>
           {totalPage}
         </button>
-        <button className="btn-4"
+        <button
+          className="btn-4"
           onClick={() => setPage((prev) => prev + 7)}
           disabled={page >= (totalPage - 1) * 7}
         >
@@ -110,5 +130,3 @@ function NBATable({ teams, text }) {
 }
 
 export default NBATable;
-
-
