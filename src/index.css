@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: Roboto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.input{
+  width: 427px;
+  height: 45px;
+  border: solid #074684 1px;
+  border-radius: 14px;
+  padding-inline: 14px;
+  font-size: 18px;
+}
+
+.backdrop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: end;
+}
+.width  div{
+  width:50%;
+}
+.table{
+  border-collapse: separate;
+  border: none;
+  border-spacing: 0 8px;
+  text-align: center;
+}
+.table tbody{
+  background-color: #F8FBFD;
+  border-radius: 5px;
+}
+.pagination button{
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #074684;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+}
