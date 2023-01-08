@@ -49,7 +49,7 @@ function TeamModal({ show, handleClose }) {
                 </div>
                 <div className="d-flex justify-content-evenly p-8 m-3 width align-items-center">
                   <div>Total Games in {details.date.substring(0,4).toString()}</div>
-                  <div>{match[Math.floor(Math.random())*100]}</div>
+                  <div>{match[Math.floor(Math.random()*10)]}</div>
                 </div>
               </div>
               <h3 className="my-2 random-details">Random Game Details</h3>
