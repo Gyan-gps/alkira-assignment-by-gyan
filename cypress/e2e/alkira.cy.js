@@ -18,7 +18,7 @@ describe('Alkira Assesment project test', () => {
 
     })
 
-    it.only("Button text with Search",()=>{
+    it("Button text with Search",()=>{
 
         cy.visit('http://localhost:3000/');
 
