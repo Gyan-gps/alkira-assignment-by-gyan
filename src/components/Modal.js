@@ -18,7 +18,7 @@ function TeamModal({ show, handleClose }) {
         }
       }
       if(!d){
-        alert("<h1>Team Details not found<h1>")
+        alert("Team Details not found")
         handleClose();
       }
     });
