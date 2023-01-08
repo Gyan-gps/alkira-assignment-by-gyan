@@ -18,7 +18,7 @@ describe('Alkira Assesment project test', () => {
 
     })
 
-    it.only("Button text with Search",()=>{
+    it("Button text with Search",()=>{
 
         cy.visit('http://localhost:3000/');
 
@@ -39,10 +39,13 @@ describe('Alkira Assesment project test', () => {
     })
 
     it("Open modal",()=>{
+        
+        // cy.intercept('PUT',/users/,{}).as("userPut")
         cy.visit('http://localhost:3000/')
 
         cy.get(".tbody tr").first().click();
 
+        // cy.wait("@userPut").its("request.url").should('include','users')
         cy.get(".header h3").first().should("have.text","76ers")
 
         cy.get(".random-details").should("have.text",'Random Game Details');
