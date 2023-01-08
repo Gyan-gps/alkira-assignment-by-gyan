@@ -1,18 +1,51 @@
-describe('Alkira page', () => {
+describe('Alkira Assesment project test', () => {
+    
     it('Visit', () => {
-        // cy.intercept(URL);
-        // cy.route("/200?**").as("fakeNetworkRequest")
+        
         cy.visit('http://localhost:3000/')
-        // cy.wait("fakeNetworkRequest")
-        cy.get(".App").find(".title").invoke("text").then((text)=>{
+        
+        cy.get(".title").should("have.text",'NBA TEAMS')
 
-            expect(text.trim()).equal("NBA TEAMS")
+        cy.get(".btn-1").should('have.text','<')
+    
+
+        cy.get(".table").find("th").first().should('have.text','Teams Name')
+
+        cy.get(".tbody tr").first().find("td").first().should('have.text','76ers')
+
+        cy.get(".tbody tr").should('have.length',7)
+        cy.get(".btn-1").should('be.disabled')
+
+    })
+
+    it.only("Button text with Search",()=>{
+
+        cy.visit('http://localhost:3000/');
+
+        cy.get("input").type("w");
+        cy.get(".tbody tr").should('have.length',4)
+        cy.get(".pagination").find(".btn-3").invoke("text").then((text)=>{
+            expect(text.trim()).equal("1")
         })
-        // cy.wait(10000)
-        cy.get(".pagination").find(".btn-1").invoke("text").then((text)=>{
-            expect(text.trim()).equal("<")
-        })
-        cy.get(".btn-3").click()
+    })
+
+    it("Pagination",()=>{
+
+        cy.visit('http://localhost:3000/')
+
+        cy.get(".btn-3").click();
+        cy.get(".btn-4").should('be.disabled')
+        cy.get(".tbody tr").should('have.length',2)
+    })
+
+    it("Open modal",()=>{
+        cy.visit('http://localhost:3000/')
+
+        cy.get(".tbody tr").first().click();
+
+        cy.get(".header h3").first().should("have.text","76ers")
+
+        cy.get(".random-details").should("have.text",'Random Game Details');
     })
 
   })

@@ -35,9 +35,9 @@ function TeamModal({ show, handleClose }) {
         <div className="backdrop" onClick={handleClick}>
         {details && (
             <div className="bg-white h-100vh" style={{width:"500px", padding:"20px"}}>
-              <div className="d-flex justify-content-between align-items-center">
+              <div className="d-flex justify-content-between align-items-center  header">
                 <h3>{details.home_team.name}</h3>
-                <h3 onClick={handleClose}>X</h3>
+                <h4 onClick={handleClose}>X</h4>
               </div>
               <div>
               {/* <div> */}
@@ -50,7 +50,7 @@ function TeamModal({ show, handleClose }) {
                   <div>{details.home_team_score}</div>
                 </div>
               </div>
-              <h3 className="my-2">Random Game Details</h3>
+              <h3 className="my-2 random-details">Random Game Details</h3>
               <div>
                 <div className="d-flex justify-content-evenly p-8 m-3 width align-items-center">
                   <div>Date</div>

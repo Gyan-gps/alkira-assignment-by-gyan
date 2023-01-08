@@ -6,6 +6,7 @@ function NBATable({ teams, text }) {
   const [bgColor, setBgColor] = useState(null);
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState(null);
+  // const [sorted,setSorted] = useState(false);
 
   const openModal = (e) => {
     setBgColor(e);
@@ -35,6 +36,7 @@ function NBATable({ teams, text }) {
   if (teams === null) return <h1>loading...</h1>;
   return (
     <>
+      {/* <button  onClick={()=>setSorted((prev)=>!prev)}></button> */}
       <table className="table mt-2">
         <thead className="text-white" style={{ backgroundColor: "#074684" }}>
           <tr>
@@ -45,7 +47,7 @@ function NBATable({ teams, text }) {
             <th>Division</th>
           </tr>
         </thead>
-        <tbody className="mt-2">
+        <tbody className="mt-2 tbody">
           {teams === null ? (
             <h1>loading...</h1>
           ) : (
